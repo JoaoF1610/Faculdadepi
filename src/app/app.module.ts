@@ -18,7 +18,12 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'
 import {MatDatepickerModule} from '@angular/material/datepicker'
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
+import { AtualizarComponent } from './components/atualizar/atualizar.component'
+import { MatNativeDateModule } from '@angular/material/core';
+import { LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 
 @NgModule({
@@ -29,6 +34,7 @@ import {MatSelectModule} from '@angular/material/select'
     ReadAllComponent,
     InativosComponent,
     CadastroComponent,
+    AtualizarComponent,
   ],
   imports: [
     MatSelectModule,
@@ -43,7 +49,8 @@ import {MatSelectModule} from '@angular/material/select'
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
-    HttpClientModule
+    HttpClientModule,
+    MatNativeDateModule
   ],
   providers: [
     provideAnimationsAsync()

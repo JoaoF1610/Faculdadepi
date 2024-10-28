@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { AlunoService } from '../../services/aluno.service';
 
 @Component({
+
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.scss'
+  styleUrls: ['./cadastro.component.scss'],
 })
 export class CadastroComponent implements OnInit {
   aluno: Aluno = {
@@ -14,26 +15,25 @@ export class CadastroComponent implements OnInit {
     ativo: true,
     dataCadastro: new Date(),
   };
-
-  constructor(private router: Router, private servico: AlunoService) { }
-
+  constructor(private router: Router,
+    private servico: AlunoService) { }
   ngOnInit(): void { }
-
   cancelar(): void {
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
-
-  formataData(): void {
-    let data = new Date(this.aluno.dataCadastro).toISOString()
+  formatarData(): void {
+    let data = new Date(this.aluno.dataCadastro).toISOString();
   }
-
   cadastrar(): void {
-    this.formataData()
-    this.servico.cadastrar(this.aluno).subscribe((resposta) => {
-      this.servico.message("Aluno cadastrado com sucesso.")
-    }, err => {
-      this.servico.message("Erro!")
-    })
+    this.formatarData();
+    console.log(this.aluno);
+    this.servico.cadastrar(this.aluno).subscribe(
+      (resposta) => {
+        this.servico.message('Aluno cadastrado com sucesso!!!');
+        this.router.navigate([''])
+      },
+      (err) => {
+        this.servico.message('Erro ao cadastrar o Aluno!');
+      });
   }
 }
-

@@ -38,4 +38,9 @@ export class AlunoService {
   findAll(): Observable<Aluno[]> {
     return this.http.get<Aluno[]>(this.baseUrl)
   }
+
+  pesquisarRA(id: any): Observable<Aluno> {
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get<Aluno>(url)
+  }
 }
